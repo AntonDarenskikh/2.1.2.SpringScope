@@ -8,5 +8,11 @@ public class App {
         HelloWorld bean =
                 (HelloWorld) applicationContext.getBean("helloworld");
         System.out.println(bean.getMessage());
+        HelloWorld bean2 = applicationContext.getBean("helloworld", HelloWorld.class);
+        System.out.println("Ссылки на объекты HelloWorld равны? [" + (bean == bean2) + "] - так при singleton");
+
+        Cat myCat1 = applicationContext.getBean("cat", Cat.class);
+        Cat myCat2 = applicationContext.getBean("cat", Cat.class);
+        System.out.println("Ссылки на объекты Cat равны? [" + (myCat1 == myCat2) + "] - так при prototype");
     }
 }
